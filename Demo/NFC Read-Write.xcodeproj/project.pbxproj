@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,9 @@
 		3A7CA69B29616DAC00363E59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A7CA69A29616DAC00363E59 /* Assets.xcassets */; };
 		3A7CA69F29616DAC00363E59 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A7CA69E29616DAC00363E59 /* Preview Assets.xcassets */; };
 		3ADDA132296B35640096CC30 /* SwiftNFC in Frameworks */ = {isa = PBXBuildFile; productRef = 3ADDA131296B35640096CC30 /* SwiftNFC */; };
+		478727232AE67F4F00523541 /* Subsonic in Frameworks */ = {isa = PBXBuildFile; productRef = 478727222AE67F4F00523541 /* Subsonic */; };
+		47A5103F2AE682E2001EA90D /* perkinsping.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 47A5103D2AE682E2001EA90D /* perkinsping.mp3 */; };
+		47A510402AE682E2001EA90D /* perkinspingdoorvoer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 47A5103E2AE682E2001EA90D /* perkinspingdoorvoer.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +26,8 @@
 		3A7CA69E29616DAC00363E59 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3ADDA12F296B35430096CC30 /* SwiftNFC */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftNFC; path = ..; sourceTree = "<group>"; };
 		3AFEBDBB2969B836005BEFED /* NFC-Read-Write-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "NFC-Read-Write-Info.plist"; sourceTree = SOURCE_ROOT; };
+		47A5103D2AE682E2001EA90D /* perkinsping.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = perkinsping.mp3; sourceTree = "<group>"; };
+		47A5103E2AE682E2001EA90D /* perkinspingdoorvoer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = perkinspingdoorvoer.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				478727232AE67F4F00523541 /* Subsonic in Frameworks */,
 				3ADDA132296B35640096CC30 /* SwiftNFC in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -58,6 +64,7 @@
 		3A7CA69529616DAB00363E59 /* NFC Read-Write */ = {
 			isa = PBXGroup;
 			children = (
+				47A5103C2AE68283001EA90D /* Audio */,
 				3AFEBDBB2969B836005BEFED /* NFC-Read-Write-Info.plist */,
 				3A7CA69629616DAB00363E59 /* NFC_Read_WriteApp.swift */,
 				3A7CA69829616DAB00363E59 /* ContentView.swift */,
@@ -91,6 +98,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		47A5103C2AE68283001EA90D /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				47A5103D2AE682E2001EA90D /* perkinsping.mp3 */,
+				47A5103E2AE682E2001EA90D /* perkinspingdoorvoer.mp3 */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -109,6 +125,7 @@
 			name = "NFC Read-Write";
 			packageProductDependencies = (
 				3ADDA131296B35640096CC30 /* SwiftNFC */,
+				478727222AE67F4F00523541 /* Subsonic */,
 			);
 			productName = "NFC Read-Write";
 			productReference = 3A7CA69329616DAB00363E59 /* NFC Read-Write.app */;
@@ -139,6 +156,7 @@
 			);
 			mainGroup = 3A7CA68A29616DAB00363E59;
 			packageReferences = (
+				478727212AE67F4F00523541 /* XCRemoteSwiftPackageReference "Subsonic" */,
 			);
 			productRefGroup = 3A7CA69429616DAB00363E59 /* Products */;
 			projectDirPath = "";
@@ -155,7 +173,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A7CA69F29616DAC00363E59 /* Preview Assets.xcassets in Resources */,
+				47A5103F2AE682E2001EA90D /* perkinsping.mp3 in Resources */,
 				3A7CA69B29616DAC00363E59 /* Assets.xcassets in Resources */,
+				47A510402AE682E2001EA90D /* perkinspingdoorvoer.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,10 +406,26 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		478727212AE67F4F00523541 /* XCRemoteSwiftPackageReference "Subsonic" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/Subsonic";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		3ADDA131296B35640096CC30 /* SwiftNFC */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftNFC;
+		};
+		478727222AE67F4F00523541 /* Subsonic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 478727212AE67F4F00523541 /* XCRemoteSwiftPackageReference "Subsonic" */;
+			productName = Subsonic;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

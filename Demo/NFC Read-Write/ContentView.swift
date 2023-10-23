@@ -7,11 +7,13 @@
 
 import SwiftUI
 import SwiftNFC
+import Subsonic
 
 struct ContentView: View {
     // MARK: - You can use either Reader / Writer or both in your application.
     @ObservedObject var NFCR = NFCReader()
     @ObservedObject var NFCW = NFCWriter()
+    @StateObject private var sound = SubsonicPlayer(sound: "perkinsping.mp3")
     
     // MARK: - Editor for I/O Message
     var editor: some View {
@@ -47,6 +49,23 @@ struct ContentView: View {
                     option
                     editorRaw
                 }
+                
+                
+                
+                
+                HStack {
+                    Button("Start") {
+                        sound.play()
+                    }
+                    
+                    Button("Stop") {
+                        sound.stop()
+                    }
+                    
+                    Slider(value: $sound.volume)
+                }
+                
+                
             }
             action
                 .frame(height: 75)
@@ -81,7 +100,7 @@ struct ContentView: View {
             Spacer()
             if keyboard {
                 Button(action: {
-                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                 }) {
                     Text("Close Keyboard")
                 }
