@@ -119,13 +119,15 @@ struct ContentView: View {
     
     // MARK: - Sample I/O Functions
     func read() {
-        play(sound: "tap-warm.aif")
+//        play(sound: "tap-warm.aif")
         NFCR.read()
+//        print(NFCR.msg)
+//        play(sound: NFCR.msg)
         
     }
     func write() {
         NFCW.msg = NFCR.msg
-        play(sound: "tap-vocal.aif")
+//        play(sound: "tap-vocal.aif")
         NFCW.write()
     }
 }

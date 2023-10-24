@@ -159,6 +159,7 @@
 		3A7CA69529616DAB00363E59 /* NFC Read-Write */ = {
 			isa = PBXGroup;
 			children = (
+				47A510B22AE7A532001EA90D /* Localizable.strings */,
 				47A5103C2AE68283001EA90D /* Audio */,
 				3AFEBDBB2969B836005BEFED /* NFC-Read-Write-Info.plist */,
 				3A7CA69629616DAB00363E59 /* NFC_Read_WriteApp.swift */,
@@ -196,7 +197,6 @@
 		47A5103C2AE68283001EA90D /* Audio */ = {
 			isa = PBXGroup;
 			children = (
-				47A510B22AE7A532001EA90D /* Localizable.strings */,
 				47A510442AE795CF001EA90D /* Octave-Sounds */,
 			);
 			path = Audio;
