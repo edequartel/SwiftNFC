@@ -13,7 +13,7 @@ struct ContentView: View {
     // MARK: - You can use either Reader / Writer or both in your application.
     @ObservedObject var NFCR = NFCReader()
     @ObservedObject var NFCW = NFCWriter()
-    @StateObject private var sound = SubsonicPlayer(sound: "perkinsping.mp3")
+    @StateObject private var sound = SubsonicPlayer(sound: "tap-resonant.aif")
     
     // MARK: - Editor for I/O Message
     var editor: some View {
@@ -21,7 +21,7 @@ struct ContentView: View {
             .font(.title)
             .padding(.top, 50)
             .padding(15)
-            .background(Color.accentColor.opacity(0.5))
+            .background(Color.gray.opacity(0.5))
     }
     // MARK: - Show Read Message Raw Data
     var editorRaw: some View {
@@ -37,40 +37,32 @@ struct ContentView: View {
     var body: some View {
         VStack(spacing: 0) {
             VStack(spacing: 0) {
-                if #available(iOS 16.0, *) {
                     editor
                         .scrollContentBackground(.hidden)
-                    option
-                    editorRaw
-                        .scrollContentBackground(.hidden)
-                } else {
-                    // Fallback on earlier versions
-                    editor
-                    option
-                    editorRaw
-                }
+//                    option
+//                    editorRaw
+//                        .scrollContentBackground(.hidden)
                 
-                
-                
-                
-                HStack {
-                    Button("Start") {
-                        sound.play()
+                VStack{
+                Slider(value: $sound.volume)
+                    HStack(spacing: 50) {
+                        Button("Start") {
+                            sound.play()
+                        }
+                        Button("Stop") {
+                            sound.stop()
+                        }
                     }
-                    
-                    Button("Stop") {
-                        sound.stop()
-                    }
-                    
-                    Slider(value: $sound.volume)
+                    .padding(10)
                 }
+                .padding(20)
                 
                 
             }
             action
-                .frame(height: 75)
+                .frame(height: 40)
         }
-        .ignoresSafeArea(.all)
+//        .ignoresSafeArea(.all)
         .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
             keyboard = true
         }
@@ -110,37 +102,51 @@ struct ContentView: View {
     
     // MARK: - Action Buttons
     var action: some View {
-        HStack(spacing: 0) {
+        HStack(spacing: 50) {
             Button (action: { read() }) {
-                ZStack {
-                    Color.pink.opacity(0.85)
-                    Label("Read NFC", systemImage: "wave.3.left.circle.fill")
-                        .foregroundColor(.white)
-                        .padding(.top, 15)
-                        .padding(.bottom, 35)
-                }
+                    Label("Read", systemImage: "wave.3.left.circle.fill")
+
             }
+//            Button { } label: {
+//                Text("tap here")
+//                    .myButtonStyle()
+//            }
             Button (action: { write() }) {
-                ZStack {
-                    Color.accentColor.opacity(0.85)
-                    Label("Write NFC", systemImage: "wave.3.left.circle.fill")
-                        .foregroundColor(.white)
-                        .padding(.top, 15)
-                        .padding(.bottom, 35)
+                    Label("Write", systemImage: "wave.3.left.circle.fill")
                 }
-            }
         }
     }
     
     // MARK: - Sample I/O Functions
     func read() {
+        play(sound: "tap-warm.aif")
         NFCR.read()
+        
     }
     func write() {
         NFCW.msg = NFCR.msg
+        play(sound: "tap-vocal.aif")
         NFCW.write()
     }
 }
+
+extension Text {
+    func myButtonStyle() -> some View {
+        self.modifier(TestButton())
+    }
+}
+
+struct TestButton: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(Font.body.bold())
+            .imageScale(.large)
+            .padding()
+            .foregroundColor(Color.primary)
+            .colorInvert()
+    }
+}
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
