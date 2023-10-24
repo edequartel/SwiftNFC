@@ -13,6 +13,7 @@ struct ContentView: View {
     // MARK: - You can use either Reader / Writer or both in your application.
     @ObservedObject var NFCR = NFCReader()
     @ObservedObject var NFCW = NFCWriter()
+    
     @StateObject private var sound = SubsonicPlayer(sound: "tap-resonant.aif")
     
     // MARK: - Editor for I/O Message
@@ -21,13 +22,13 @@ struct ContentView: View {
             .font(.title)
             .padding(.top, 50)
             .padding(15)
-            .background(Color.gray.opacity(0.5))
+//            .background(Color.gray.opacity(0.5))
     }
     // MARK: - Show Read Message Raw Data
     var editorRaw: some View {
         TextEditor(text: $NFCR.raw)
             .padding(15)
-            .background(Color.red.opacity(0.5))
+//            .background(Color.red.opacity(0.5))
     }
     
     // MARK: - Detect whether the keyboard shown on screen or not.
@@ -107,10 +108,6 @@ struct ContentView: View {
                     Label("Read", systemImage: "wave.3.left.circle.fill")
 
             }
-//            Button { } label: {
-//                Text("tap here")
-//                    .myButtonStyle()
-//            }
             Button (action: { write() }) {
                     Label("Write", systemImage: "wave.3.left.circle.fill")
                 }
@@ -119,33 +116,12 @@ struct ContentView: View {
     
     // MARK: - Sample I/O Functions
     func read() {
-//        play(sound: "tap-warm.aif")
         NFCR.read()
-//        print(NFCR.msg)
-//        play(sound: NFCR.msg)
-        
     }
+
     func write() {
         NFCW.msg = NFCR.msg
-//        play(sound: "tap-vocal.aif")
         NFCW.write()
-    }
-}
-
-extension Text {
-    func myButtonStyle() -> some View {
-        self.modifier(TestButton())
-    }
-}
-
-struct TestButton: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .font(Font.body.bold())
-            .imageScale(.large)
-            .padding()
-            .foregroundColor(Color.primary)
-            .colorInvert()
     }
 }
 
